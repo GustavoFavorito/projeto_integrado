@@ -8,6 +8,7 @@ import br.usjt.ccp3an_mca_projeto_integrado.service.ICategoriaService;
 import br.usjt.ccp3an_mca_projeto_integrado.service.IConteudoService;
 import br.usjt.ccp3an_mca_projeto_integrado.service.ITagService;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/conteudo")
@@ -86,12 +91,17 @@ public class ConteudoController {
 	}
 
 	@GetMapping("/feedback/{feedback}/{id}")
-	@ResponseBody
-	public void feedback(@PathVariable String feedback, @PathVariable Long id) {
-		if(feedback.equals("like")) {
-			conteudoService.darLike(id);
-		} else if(feedback.equals("dislike")) {
-			conteudoService.darDislike(id);
+	public String feedback(@PathVariable String feedback, @PathVariable Long id, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("usuarioLogado") != null) {
+			if (feedback.equals("like")) {
+				conteudoService.darLike(id);
+			} else if (feedback.equals("dislike")) {
+				conteudoService.darDislike(id);
+			}
+		} else if(session.getAttribute("usuarioLogado	") == null){
+			return "redirect:/login";
 		}
+		return "redirect:/	";
 	}
 }

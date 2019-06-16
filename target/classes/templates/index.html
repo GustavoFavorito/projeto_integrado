@@ -23,10 +23,6 @@
 				}
 			});
 		});
-
-		$("#like").click(function() {
-			$("#feedback").load(" #feedback > *");
-		});
 	</script>
 	
 	<title>Media Center</title>
@@ -54,7 +50,7 @@
 <!--						</li>-->
 <!--					</ul>-->
 <!--					&lt;!&ndash; /nav &ndash;&gt;-->
-					
+
 					<div class="nav-btns">
 						<button class="aside-btn">
 							<i class="fa fa-bars"></i>
@@ -94,6 +90,7 @@
 						<li><a th:href="@{/conteudo/criar}" th:text="#{crie-sua-noticia}"></a></li>
 						<li><a th:href="@{/arquivo/upload}"
 							   th:text="#{faca-upload-de-material}"></a></li>
+						<li><a href="login.html" th:text="#{fazer-login}"></a></li>
 						<li><a href="login.html" th:text="#{sair}"></a></li>
 					</ul>
 				</div>
@@ -174,12 +171,12 @@
 								</div>
 
 								<div class="col-md-12">
-									<div id="feedback" th:each="conteudo : ${conteudos}" class="caixa-conteudo">
-										
+									<div th:each="conteudo : ${conteudos}" class="caixa-conteudo">
+
 										<div class="conteudo-arquivo">
 											<div th:utext="*{conteudo.getHtml()}"></div>
 										</div>
-										
+
 										<a id="like" th:href="@{/conteudo/feedback/like/{conteudoId}(conteudoId=${conteudo.getId()})}"><i class="fas fa-thumbs-up fa-2x"></i></a>
 										<a th:text="*{conteudo.getLike()}"></a>
 										<a id="dislike" th:href="@{/conteudo/feedback/dislike/{conteudoId}(conteudoId=${conteudo.getId()})}"><i class="fas fa-thumbs-down fa-2x"></i></a>

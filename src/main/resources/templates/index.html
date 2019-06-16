@@ -23,10 +23,6 @@
 				}
 			});
 		});
-
-		$("#like").click(function() {
-			$("#feedback").load(" #feedback > *");
-		});
 	</script>
 	
 	<title>Media Center</title>
@@ -175,7 +171,7 @@
 								</div>
 
 								<div class="col-md-12">
-									<div id="feedback" th:each="conteudo : ${conteudos}" class="caixa-conteudo">
+									<div th:each="conteudo : ${conteudos}" class="caixa-conteudo">
 
 										<div class="conteudo-arquivo">
 											<div th:utext="*{conteudo.getHtml()}"></div>

@@ -18,18 +18,18 @@ public class LoginController {
     private LoginService loginService;
 
     @GetMapping (value = {"/login", "/fazerLogin"})
-    public ModelAndView login () {
+    public ModelAndView login() {
         ModelAndView mv = new ModelAndView ("login");
         mv.addObject(new Usuario());
         return mv;
     }
 
     @PostMapping({"/login", "/fazerLogin"})
-    public String fazerLogin (HttpServletRequest request, Usuario usuario, Model model) {
+    public String fazerLogin(HttpServletRequest request, Usuario usuario, Model model) {
         if (loginService.logar(usuario)) {
             if(loginService.verificarPermissao(usuario).equals("administrador")) {
                 request.getSession().setAttribute("usuarioLogado", usuario);
-                return "criar_noticia";
+                return "redirect:/home/busca";
             } else {
                 return "login";
             }

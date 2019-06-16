@@ -62,7 +62,7 @@ public class HomeController {
 		return mv;
 	}
     
-    @PostMapping("/home/busca")
+    @GetMapping("/home/busca")
 	public ModelAndView buscarConteudo(String descricao) {
 		ModelAndView mv = new ModelAndView("index");
 

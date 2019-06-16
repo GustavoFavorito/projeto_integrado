@@ -20,6 +20,9 @@ public interface IConteudoRepository extends JpaRepository<Conteudo, Long>{
     @Query("SELECT c FROM Conteudo c INNER JOIN c.categoria ca WHERE ca.descricao = ?1")
     public List<Conteudo> buscaPorCategoria(String categoria);
 
+//    @Query("SELECT descricao, data FROM conteudo WHERE data IN (SELECT MAX(data) FROM conteudo)")
+//    public Conteudo buscaPorMaisRecente();
+
     @Modifying
     @Query("UPDATE Conteudo c SET c.feedbackLike = c.feedbackLike + 1 WHERE c.id = ?1")
     public void darLike(Long id);

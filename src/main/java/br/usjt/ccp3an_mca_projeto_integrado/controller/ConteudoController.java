@@ -99,7 +99,7 @@ public class ConteudoController {
 			} else if (feedback.equals("dislike")) {
 				conteudoService.darDislike(id);
 			}
-		} else if(session.getAttribute("usuarioLogado	") == null){
+		} else if(session.getAttribute("usuarioLogado") == null){
 			return "redirect:/login";
 		}
 		return "redirect:/	";

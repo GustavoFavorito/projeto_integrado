@@ -126,4 +126,12 @@ public class Conteudo {
     public void setDislike(int dislike) {
         this.feedbackDislike = dislike;
     }
+
+    public String retornaLista() {
+        StringBuilder builder = new StringBuilder();
+        for (Tag value : getTags()) {
+            builder.append(value);
+        }
+        return builder.toString();
+    }
 }

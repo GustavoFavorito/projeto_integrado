@@ -35,4 +35,9 @@ public class Tag {
     public void setConteudos(List<Conteudo> conteudos) {
         this.conteudos = conteudos;
     }
+
+    @Override
+    public String toString() {
+        return nomeTag + " ";
+    }
 }

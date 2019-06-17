@@ -9,10 +9,10 @@
 	<!--	<link type="text/css" rel="stylesheet" th:href="@{css/style.css}"/>-->
 	<!--	<link type="text/css" rel="stylesheet" th:href="@{css/Pag-Inicial.css}"/>-->
 	<!--	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600" rel="stylesheet"/>-->
-	<link rel="icon" th:href="@{~/imagens/são-judas-logo.png}"/>
+	<link rel="icon" th:href="@{~/imagens/logo.png}"/>
 	<link type="text/css" rel="stylesheet" th:href="@{~/css/estilo.css}"/>
 	<link type="text/css" rel="stylesheet" th:href="@{~/css/bootstrap.min.css}"/>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libsx-frame/jquery/3.1.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 	
 	<script type="text/javascript">
@@ -176,20 +176,26 @@
 
 										<div class="conteudo-arquivo">
 											<div th:utext="*{conteudo.getHtml()}"></div>
+											<div th:utext="*{conteudo.getTags()}"></div>
+											<div class="adiconar-tag">
+												<button type="button" class="btn btn-default" >adicionar tag</button>
+											</div>
 										</div>
 
-										<a id="like" th:href="@{/conteudo/feedback/like/{conteudoId}(conteudoId=${conteudo.getId()})}"><i class="fas fa-thumbs-up fa-2x"></i></a>
-										<a th:text="*{conteudo.getLike()}"></a>
-										<a id="dislike" th:href="@{/conteudo/feedback/dislike/{conteudoId}(conteudoId=${conteudo.getId()})}"><i class="fas fa-thumbs-down fa-2x"></i></a>
-										<a th:text="*{conteudo.getDislike()}"></a>
+										<div>
+											<a id="like" th:href="@{/conteudo/feedback/like/{conteudoId}(conteudoId=${conteudo.getId()})}"><i class="fas fa-thumbs-up fa-1x"></i></a>
+											<a th:text="*{conteudo.getLike()}"></a>
+											<a id="dislike" th:href="@{/conteudo/feedback/dislike/{conteudoId}(conteudoId=${conteudo.getId()})}"><i class="fas fa-thumbs-down fa-1x"></i></a>
+											<a th:text="*{conteudo.getDislike()}"></a>
+										</div>
 									</div>
 								</div>
 
-								<div class="col-md-12">
-									<div class="section-row">
-										<button class="primary-button center-block" th:text="#{ver-mais}"></button>
-									</div>
-								</div>
+<!--								<div class="col-md-12">-->
+<!--									<div class="section-row">-->
+<!--										<button class="primary-button center-block" th:text="#{ver-mais}"></button>-->
+<!--									</div>-->
+<!--								</div>-->
 							</div>
 						</div>
 	

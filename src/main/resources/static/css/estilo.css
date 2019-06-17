@@ -1135,5 +1135,13 @@ iframe, audio, video, img{
 .caixa-conteudo{
 	margin: 0px 0px 40px 0px;
 	padding: 10px;
-	border: 1px solid #dcdcdc;
+	border: 1px #dcdcdc;
+    border-style: none none solid none;
+    width: 500px
+}
+
+.adiconar-tag {
+    position: relative;
+    left: 75%;
+    width: 30px;
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
@@ -25,17 +26,23 @@ public class LoginController {
     }
 
     @PostMapping({"/login", "/fazerLogin"})
-    public String fazerLogin(HttpServletRequest request, Usuario usuario, Model model) {
+    public String fazerLogin(HttpServletRequest request, HttpSession session, Usuario usuario, Model model) {
+        session.invalidate();
         if (loginService.logar(usuario)) {
-            if(loginService.verificarPermissao(usuario).equals("administrador")) {
-                request.getSession().setAttribute("usuarioLogado", usuario);
-                return "redirect:/home/busca";
-            } else {
-                return "login";
+            switch (loginService.verificarPermissao(usuario)) {
+                case "administrador":
+                    request.getSession().setAttribute("administrador", usuario);
+                    return "redirect:/arquivo/upload";
+                case "usuario":
+                    request.getSession().setAttribute("usuario", usuario);
+                    return "redirect:/home/busca";
+                case "estagiario":
+                    request.getSession().setAttribute("estagiario", usuario);
+                    return "redirect:/conteudo/criar";
             }
         } else {
             model.addAttribute("erroLogin", "erroLogin");
-            return "login";
         }
+        return "login";
     }
 }

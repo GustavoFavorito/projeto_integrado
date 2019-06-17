@@ -14,6 +14,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.usjt.ccp3an_mca_projeto_integrado.model.Arquivo;
 import br.usjt.ccp3an_mca_projeto_integrado.service.IArquivoService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("arquivo")
 public class ArquivoController {
@@ -22,7 +25,13 @@ public class ArquivoController {
 	IArquivoService arquivoService;
 	
 	@GetMapping("upload")
-    public String upload() {
+    public String upload(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("estagiario") == null || session.getAttribute("administrador") == null) {
+			return "redirect:/login";
+		} else if (session.getAttribute("usuario") != null) {
+			return "redirect:/login";
+		}
 		return "arquivo/upload";
     }
 	

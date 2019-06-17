@@ -93,15 +93,15 @@ public class ConteudoController {
 	@GetMapping("/feedback/{feedback}/{id}")
 	public String feedback(@PathVariable String feedback, @PathVariable Long id, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		if(session.getAttribute("usuarioLogado") != null) {
+		if(session.getAttribute("usuario") != null) {
 			if (feedback.equals("like")) {
 				conteudoService.darLike(id);
 			} else if (feedback.equals("dislike")) {
 				conteudoService.darDislike(id);
 			}
-		} else if(session.getAttribute("usuarioLogado") == null){
+		} else if(session.getAttribute("usuario") == null){
 			return "redirect:/login";
 		}
-		return "redirect:/	";
+		return "redirect:/";
 	}
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -18,6 +18,16 @@
 				selector: '#mytextarea'
 			});
 		</script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#locales").change(function() {
+					var selectedOption = $('#locales').val();
+					if (selectedOption !== '') {
+						window.location.replace('home?lang=' + selectedOption);
+					}
+				});
+			});
+		</script>
     </head>
     
     <body>
@@ -31,62 +41,82 @@
 					<div class="container">
 						<!-- TITULO -->
 						<div class="nav-logo">
-							<a href="/" class="logo">SOCIALMEDIA</a>
+							<a href="/" class="logo">SOCIAL MEDIA</a>
 						</div>
 						<!-- /TITULO -->
 
-						<!-- nav -->
-						<ul class="nav-menu nav navbar-nav">
-							<li><a href="http://localhost:8080/arquivo/upload">Upload</a></li>
-							<li><a href="http://localhost:8080/conteudo/criar">Criar Conteudo</a></li>
-						</ul>
-						<!-- /nav -->
+						<!--					&lt;!&ndash; nav &ndash;&gt;-->
+						<!--					<ul class="nav-menu nav navbar-nav">-->
+						<!--						<li th:each="categoria, iStat : ${categorias}" th:class="'cat-'+${iStat.count}">-->
+						<!--                                <a href="#" th:href="@{/home/busca_categoria/{categoria}(categoria=${categoria.getDescricao()})}"-->
+						<!--                                   th:text="#{*{categoria.getDescricao()}}"></a>-->
+						<!--						</li>-->
+						<!--					</ul>-->
+						<!--					&lt;!&ndash; /nav &ndash;&gt;-->
 
-						<!-- BOTAO PESQUISA & TRANSIÇÃO -->
 						<div class="nav-btns">
-							<button class="aside-btn"><i class="fa fa-bars"></i></button>
-							<button class="search-btn"><i class="fa fa-search"></i></button>
+							<button class="aside-btn">
+								<i class="fa fa-bars"></i>
+							</button>
+							<button class="search-btn">
+								<i class="fa fa-search"></i>
+							</button>
 							<div class="search-form">
-								<input class="search-input" type="text" name="search" placeholder="Enter Your Search ..."/>
-								<button class="search-close"><i class="fa fa-times"></i></button>
+								<form name="busca_descricao" action="/conteudo/busca_descricao/" method="post">
+									<div class="search-form">
+										<input class="search-input" type="text" name="descricao"
+											   placeholder="Digite sua pesquisa"/>
+										<button class="search-close">
+											<input type="submit">
+											<i class="fa fa-times"></i>
+										</button>
+									</div>
+									<input type="submit">
+								</form>
+								<button class="search-close">
+									<i class="fa fa-times"></i>
+								</button>
 							</div>
 						</div>
-						<!-- /BOTAO PESQUISA & TRANSIÇÃO -->
+						<!-- /BOTÃO PESQUISA & TRANSIÇÃO -->
 					</div>
 				</div>
-				<!-- /MENU SUPERIOR Nav -->
+				<!-- /MENU SEPERIOR Nav -->
 
 				<!-- MENU LATERAL Nav -->
 				<div id="nav-aside">
 					<!-- nav -->
 					<div class="section-row">
 						<ul class="nav-aside-menu">
-							<li><a href="inicio.html">Inicio</a></li>
-							<li><a href="sobre-nos.html">Sobre Nós</a></li>
-							<li><a href="#">Crie sua noticia</a></li>
-							<li><a href="#">Faça upload de material</a></li>
-							<li><a href="login.html">Sair</a></li>
+							<li><a href="index.html" th:text="#{inicio}"></a></li>
+							<li><a th:text="#{sobre-nos}"></a></li>
+							<li><a th:href="@{/conteudo/criar}" th:text="#{crie-sua-noticia}"></a></li>
+							<li><a th:href="@{/arquivo/upload}"
+								   th:text="#{faca-upload-de-material}"></a></li>
+							<li><a th:href="@{/login}" th:text="#{fazer-login}"></a></li>
+							<li><a th:href="@{/login}" th:text="#{sair}"></a></li>
 						</ul>
 					</div>
 					<!-- /nav -->
 
-					<!-- MEDIAS SOCIAIS -->
+					<!-- MEDIA SOCIAS -->
 					<div class="section-row">
-						<h3>Siga-nos</h3>
-						<ul class="nav-aside-social">
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-							<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+						<h3><span th:text="#{lang.esc}"></span>:</h3>
+						<ul>
+							<li><a href="http://localhost:8080/home?lang=pt"><img alt="" src="/imagens/portugues.png" class="icon-ling"></a> português</li>
+							<li><a href="http://localhost:8080/home?lang=es"><img alt="" src="/imagens/spanish.png" class="icon-ling"></a> spanish</li>
+							<li><a href="http://localhost:8080/home?lang=en"><img alt="" src="/imagens/english.png" class="icon-ling"></a> english</li>
 						</ul>
 					</div>
-					<!-- /MEDIAS SOCIAIS -->
+					<!-- /MEDIA SOCIAS -->
 
 					<!-- FECHAR MENU LATERAL Nav -->
-					<button class="nav-aside-close"><i class="fa fa-times"></i></button>
-					<!-- /FECHAR MENU LATERAL Nav -->
+					<button class="nav-aside-close">
+						<i class="fa fa-times"></i>
+					</button>
+					<!-- FECHAR MENU LATERAL Nav -->
 				</div>
-				<!-- MENU LATERAL Nav -->
+				<!-- /MENU LATEAL Nav -->
 			</div>
 			<!-- /Nav -->
 		</header>

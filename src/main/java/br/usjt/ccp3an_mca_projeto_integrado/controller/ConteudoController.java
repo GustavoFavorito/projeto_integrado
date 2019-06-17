@@ -38,17 +38,25 @@ public class ConteudoController {
 	IConteudoService conteudoService;
 
 	@GetMapping("criar")
-    public ModelAndView criar() {
+    public ModelAndView criar(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+
+		if(session.getAttribute("estagiario") == null && session.getAttribute("administrador") == null) {
+			return new ModelAndView ("redirect:/login");
+		} else if (session.getAttribute("usuario") != null) {
+			return new ModelAndView ("redirect:/login");
+		}
+
 		ModelAndView mv = new ModelAndView ("conteudo/criar");
-		
+
 		Map<TipoDeArquivo, List<Arquivo>> arquivosPorTipoDeArquivo = arquivoService.carregarArquivosPorTipoDeArquivo();
 		List<Categoria> categorias = categoriaService.carregarCategorias();
 		List<Tag> tags = tagService.carregarTag();
-		
+
 		mv.addObject("arquivosPorTipoDeArquivo", arquivosPorTipoDeArquivo);
 		mv.addObject("categorias", categorias);
 		mv.addObject("tags", tags);
-		
+
 		return mv;
     }
 	

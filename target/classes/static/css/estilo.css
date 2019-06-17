@@ -284,8 +284,12 @@ textarea.input {
 }
 
 .nav-logo .logo {
-     line-height: 70px;
-     display:inline-block;
+    line-height: 70px;
+    display:inline-block;
+    color: #1750D4;
+    font-weight: bold;
+    font-size: 25px;
+    text-decoration: none;
 }
 
 .nav-logo .logo > img {

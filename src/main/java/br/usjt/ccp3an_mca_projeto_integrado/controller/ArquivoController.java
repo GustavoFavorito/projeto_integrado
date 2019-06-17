@@ -27,7 +27,7 @@ public class ArquivoController {
 	@GetMapping("upload")
     public String upload(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		if(session.getAttribute("estagiario") == null || session.getAttribute("administrador") == null) {
+		if(session.getAttribute("estagiario") == null && session.getAttribute("administrador") == null) {
 			return "redirect:/login";
 		} else if (session.getAttribute("usuario") != null) {
 			return "redirect:/login";

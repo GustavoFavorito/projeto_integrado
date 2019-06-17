@@ -8,6 +8,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="css/bootstrap.min.css"/>
         <link rel="stylesheet" type="text/css" href="css/login.css"/>
+        <link rel="icon" th:href="@{~/imagens/são-judas-logo.png}"/>
         <title>Login</title>
     </head>
 
@@ -34,16 +35,22 @@
                         <p>
                         <div class="container">
                             <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <label for="admin">
                                         <input id="admin" type="radio" name="permissao" value="administrador"/>
                                         Admin
                                     </label>
                                 </div>
                                 <div class="col-md-1">
-                                    <label for="user">
-                                        <input id="user" type="radio" checked="checked" name="permissao" value="user"/>
+                                    <label for="usuario">
+                                        <input id="usuario" type="radio" checked="checked" name="permissao" value="usuario"/>
                                         User
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="estagiario">
+                                        <input id="estagiario" type="radio" checked="checked" name="permissao" value="estagiario"/>
+                                        Estagiario
                                     </label>
                                 </div>
                             </div>

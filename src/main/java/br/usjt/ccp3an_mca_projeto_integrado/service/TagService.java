@@ -18,4 +18,14 @@ public class TagService implements ITagService{
 		return tagRepo.findAll();
 	}
 
+	@Override
+	public void inserirTag(Tag tag) {
+		tagRepo.save(tag);
+	}
+
+	@Override
+	public void removerTag(Tag tag) {
+		tagRepo.delete(tag);
+	}
+
 }

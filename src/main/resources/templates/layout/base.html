@@ -18,16 +18,16 @@
 				selector: '#mytextarea'
 			});
 		</script>
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$("#locales").change(function() {
-					var selectedOption = $('#locales').val();
-					if (selectedOption !== '') {
-						window.location.replace('home?lang=' + selectedOption);
-					}
-				});
-			});
-		</script>
+<!--		<script type="text/javascript">-->
+<!--			$(document).ready(function() {-->
+<!--				$("#locales").change(function() {-->
+<!--					var selectedOption = $('#locales').val();-->
+<!--					if (selectedOption !== '') {-->
+<!--						window.location.replace('home?lang=' + selectedOption);-->
+<!--					}-->
+<!--				});-->
+<!--			});-->
+<!--		</script>-->
     </head>
     
     <body>
@@ -41,47 +41,30 @@
 					<div class="container">
 						<!-- TITULO -->
 						<div class="nav-logo">
-							<a href="/" class="logo">SOCIAL MEDIA</a>
+							<a href="/" class="logo">SOCIALMEDIA</a>
 						</div>
 						<!-- /TITULO -->
 
-						<!--					&lt;!&ndash; nav &ndash;&gt;-->
-						<!--					<ul class="nav-menu nav navbar-nav">-->
-						<!--						<li th:each="categoria, iStat : ${categorias}" th:class="'cat-'+${iStat.count}">-->
-						<!--                                <a href="#" th:href="@{/home/busca_categoria/{categoria}(categoria=${categoria.getDescricao()})}"-->
-						<!--                                   th:text="#{*{categoria.getDescricao()}}"></a>-->
-						<!--						</li>-->
-						<!--					</ul>-->
-						<!--					&lt;!&ndash; /nav &ndash;&gt;-->
+						<!-- nav -->
+						<ul class="nav-menu nav navbar-nav">
+							<li><a href="http://localhost:8080/arquivo/upload">Upload</a></li>
+							<li><a href="http://localhost:8080/conteudo/criar">Criar Conteudo</a></li>
+						</ul>
+						<!-- /nav -->
 
+						<!-- BOTAO PESQUISA & TRANSIÇÃO -->
 						<div class="nav-btns">
-							<button class="aside-btn">
-								<i class="fa fa-bars"></i>
-							</button>
-							<button class="search-btn">
-								<i class="fa fa-search"></i>
-							</button>
+							<button class="aside-btn"><i class="fa fa-bars"></i></button>
+							<button class="search-btn"><i class="fa fa-search"></i></button>
 							<div class="search-form">
-								<form name="busca_descricao" action="/conteudo/busca_descricao/" method="post">
-									<div class="search-form">
-										<input class="search-input" type="text" name="descricao"
-											   placeholder="Digite sua pesquisa"/>
-										<button class="search-close">
-											<input type="submit">
-											<i class="fa fa-times"></i>
-										</button>
-									</div>
-									<input type="submit">
-								</form>
-								<button class="search-close">
-									<i class="fa fa-times"></i>
-								</button>
+								<input class="search-input" type="text" name="search" placeholder="Enter Your Search ..."/>
+								<button class="search-close"><i class="fa fa-times"></i></button>
 							</div>
 						</div>
-						<!-- /BOTÃO PESQUISA & TRANSIÇÃO -->
+						<!-- /BOTAO PESQUISA & TRANSIÇÃO -->
 					</div>
 				</div>
-				<!-- /MENU SEPERIOR Nav -->
+				<!-- /MENU SUPERIOR Nav -->
 
 				<!-- MENU LATERAL Nav -->
 				<div id="nav-aside">
@@ -116,7 +99,7 @@
 					</button>
 					<!-- FECHAR MENU LATERAL Nav -->
 				</div>
-				<!-- /MENU LATEAL Nav -->
+				<!-- MENU LATERAL Nav -->
 			</div>
 			<!-- /Nav -->
 		</header>

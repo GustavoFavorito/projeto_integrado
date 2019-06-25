@@ -17,4 +17,13 @@ public class CategoriaService implements ICategoriaService {
 	public List<Categoria> carregarCategorias(){
 		return categoriaRepo.findAll();
 	}
+	
+	public void inserirCategoria(Categoria categoria) {
+		categoriaRepo.save(categoria);
+	}
+
+	@Override
+	public void removerCategoria(Categoria categoria) {
+		categoriaRepo.delete(categoria);
+	}
 }

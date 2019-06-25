@@ -391,7 +391,7 @@ textarea.input {
      opacity: 0;
      visibility: hidden;
      -webkit-transition: 0.3s all;
-     transition: 0.3s all;
+     transition: 0.3s all;;
 }
 
 .nav-btns .search-form.active {
@@ -421,6 +421,7 @@ textarea.input {
      color: #212631;
      font-size: 22px;
      padding: 0;
+    margin-right: 10px;
 }
 
 /*----------------------------*\

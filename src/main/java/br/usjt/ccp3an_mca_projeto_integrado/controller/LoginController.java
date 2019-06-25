@@ -32,7 +32,7 @@ public class LoginController {
             switch (loginService.verificarPermissao(usuario)) {
                 case "administrador":
                     request.getSession().setAttribute("administrador", usuario);
-                    return "redirect:/arquivo/upload";
+                    return "redirect:/categoria";
                 case "usuario":
                     request.getSession().setAttribute("usuario", usuario);
                     return "redirect:/home/busca";

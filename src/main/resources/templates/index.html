@@ -63,9 +63,9 @@
 							<form name="busca_descricao" action="/conteudo/busca_descricao/" method="post">
 								<div class="search-form">
 									<input class="search-input" type="text" name="descricao"
-										   placeholder="Digite sua pesquisa"/>
+										   th:placeholder="#{digite-pesquisa}"/>
 									<button class="search-close">
-										<input type="submit">
+										<input class="search-close" type="submit" th:value="#{buscar}">
 										<i class="fa fa-times"></i>
 									</button>
 								</div>
@@ -86,11 +86,13 @@
 				<!-- nav -->
 				<div class="section-row">
 					<ul class="nav-aside-menu">
-						<li><a href="index.html" th:text="#{inicio}"></a></li>
+						<li><a th:href="@{/index}" th:text="#{inicio}"></a></li>
 						<li><a th:text="#{sobre-nos}"></a></li>
 						<li><a th:href="@{/conteudo/criar}" th:text="#{crie-sua-noticia}"></a></li>
 						<li><a th:href="@{/arquivo/upload}"
 							   th:text="#{faca-upload-de-material}"></a></li>
+						<li><a th:href="@{/tag}" th:text="#{cadastrar-tags}"></a></li>
+						<li><a th:href="@{/categoria}" th:text="#{cadastrar-categorias}"></a></li>
 						<li><a th:href="@{/login}" th:text="#{fazer-login}"></a></li>
 						<li><a th:href="@{/login}" th:text="#{sair}"></a></li>
 					</ul>
@@ -177,9 +179,9 @@
 										<div class="conteudo-arquivo">
 											<div th:utext="*{conteudo.getHtml()}"></div>
 											<div th:utext="*{conteudo.getTags()}"></div>
-											<div class="adiconar-tag">
-												<button type="button" class="btn btn-default" >adicionar tag</button>
-											</div>
+<!--											<div class="adiconar-tag">-->
+<!--												<a th:href="@{/tag}" type="button" class="btn btn-primary">adicionar tag</a>-->
+<!--											</div>-->
 										</div>
 
 										<div>
@@ -298,7 +300,7 @@
 						<div class="footer-newsletter">
 							<form>
 								<input class="input" type="email" name="newsletter"
-									placeholder="Digite seu e-mail">
+									th:placeholder="#{digite-email}">
 								<button class="newsletter-btn">
 									<i class="fa fa-paper-plane"></i>
 								</button>
